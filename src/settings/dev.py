@@ -8,6 +8,7 @@ WAGTAILADMIN_BASE_URL = "http://localhost:8000"
 
 ALLOWED_HOSTS = ["*"]
 
+
 try:
     from .local import *
 except ImportError:

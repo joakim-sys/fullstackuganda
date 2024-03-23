@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "whitenoise.runserver_nostatic",  # added
     "django.contrib.sitemaps",
 ]
 
@@ -63,7 +62,6 @@ MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",  # added
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -100,41 +98,29 @@ WSGI_APPLICATION = "src.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# if DEVELOPMENT_MODE:
-#     DATABASES = {
-#         "default": {
-#             "ENGINE": "django.db.backends.sqlite3",
-#             "NAME": os.path.join(BASE_DIR, "fullstackugandadb"),
-#         }
-#     }
 
-# else:
-#     if "DATABASE_URL" in os.environ:
-#         DATABASES = {"default": dj_database_url.config(conn_max_age=500)}
-#     else:
-
-#         DATABASES = {
-#             "default": {
-#                 "ENGINE": "django.db.backends.mysql",
-#                 "NAME": os.environ.get("MYSQL_DATABASE", ""),
-#                 "USER": os.environ.get("MYSQL_USER", ""),
-#                 "PASSWORD": os.environ.get("MYSQL_PASSWORD", ""),
-#                 "HOST": os.environ.get("MYSQL_HOST", ""),
-#                 "PORT": os.environ.get("MYSQL_PORT", ""),
-#             }
-#         }
+#if "DATABASE_URL" in os.environ:
+#DATABASES = {"default": dj_database_url.config(conn_max_age=500)}
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_NAME',''),
-        'USER': os.environ.get('MYSQL_USERNAME',''),
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD',''),
-        'HOST': os.environ.get('MYSQL_HOSTNAME',''),
+if DEVELOPMENT_MODE:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "fullstackugandadb"),
+        }
     }
-}
-
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": os.environ.get("MYSQL_DATABASE", ""),
+            "USER": os.environ.get("MYSQL_USER", ""),
+            "PASSWORD": os.environ.get("MYSQL_PASSWORD", ""),
+            "HOST": os.environ.get("MYSQL_HOST", ""),
+            "PORT": os.environ.get("MYSQL_PORT", ""),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -176,16 +162,15 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, "static"),
 ]
 
-
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(PROJECT_DIR, "collect_static")
 STATIC_URL = "/static/"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = os.path.join(PROJECT_DIR, "media")
 MEDIA_URL = "/media/"
 
 
