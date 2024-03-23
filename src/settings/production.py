@@ -115,7 +115,7 @@ if ELASTICSEARCH_ENDPOINT:
             aws_service="es",
         )
 
-
+WHITENOISE_MANIFEST_STRICT = False
 MIDDLEWARE.append("whitenoise.middleware.WhiteNoiseMiddleware")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
