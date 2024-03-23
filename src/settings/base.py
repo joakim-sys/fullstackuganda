@@ -98,29 +98,41 @@ WSGI_APPLICATION = "src.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-if DEVELOPMENT_MODE:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "fullstackugandadb"),
-        }
+# if DEVELOPMENT_MODE:
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.sqlite3",
+#             "NAME": os.path.join(BASE_DIR, "fullstackugandadb"),
+#         }
+#     }
+
+# else:
+#     if "DATABASE_URL" in os.environ:
+#         DATABASES = {"default": dj_database_url.config(conn_max_age=500)}
+#     else:
+
+#         DATABASES = {
+#             "default": {
+#                 "ENGINE": "django.db.backends.mysql",
+#                 "NAME": os.environ.get("MYSQL_DATABASE", ""),
+#                 "USER": os.environ.get("MYSQL_USER", ""),
+#                 "PASSWORD": os.environ.get("MYSQL_PASSWORD", ""),
+#                 "HOST": os.environ.get("MYSQL_HOST", ""),
+#                 "PORT": os.environ.get("MYSQL_PORT", ""),
+#             }
+#         }
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.environ.get("MYSQL_DATABASE", ""),
+        "USER": os.environ.get("MYSQL_USER", ""),
+        "PASSWORD": os.environ.get("MYSQL_PASSWORD", ""),
+        "HOST": os.environ.get("MYSQL_HOST", ""),
+        "PORT": os.environ.get("MYSQL_PORT", ""),
     }
+}
 
-else:
-    if "DATABASE_URL" in os.environ:
-        DATABASES = {"default": dj_database_url.config(conn_max_age=500)}
-    else:
-
-        DATABASES = {
-            "default": {
-                "ENGINE": "django.db.backends.mysql",
-                "NAME": os.environ.get("MYSQL_DATABASE", ""),
-                "USER": os.environ.get("MYSQL_USER", ""),
-                "PASSWORD": os.environ.get("MYSQL_PASSWORD", ""),
-                "HOST": os.environ.get("MYSQL_HOST", ""),
-                "PORT": os.environ.get("MYSQL_PORT", ""),
-            }
-        }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

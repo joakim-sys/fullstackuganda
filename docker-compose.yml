@@ -8,7 +8,7 @@ services:
       - "3306:3306"
     volumes:
       - dbdata:/var/lib/mysql
-    container_name: mysql
+    container_name: mysql_fsug
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
       interval: 10s
