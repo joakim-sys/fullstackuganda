@@ -1,0 +1,74 @@
+{% with title=page.about_title heading=page.about_heading subheading=page.about_subheading intro=page.about_intro listing=page.about_listed_services.all body=page.about_body cta_link=page.about_cta_link cta_text=page.about_cta_text %}
+
+<!-- ======= About Section ======= -->
+<section id="about" class="about">
+  <div class="container">
+    <div class="section-title">
+      <h2>{% if title %}{{title}}{% else %}Story{% endif %}</h2>
+      
+      {% if heading %} <h3>{{heading}}</h3> {% else %} <h3>About <span>Full Stack Uganda</span></h3> {% endif %}
+
+      {% if subheading %}
+        <p>{{subheading}}</p>
+        {% else %}
+       <p>a journey of innovation and dedication, fueled by our passion for crafting exceptional web solutions.</p> 
+      {% endif %}
+    </div>
+
+    <div class="row content">
+      <div class="col-lg-6">
+        <p>
+          {% if intro %}
+          {{intro}}
+          {% else %}
+          Founded with a passion for innovation and a commitment to excellence, Full Stack Uganda brings together a team of dedicated professionals with a shared vision of crafting exceptional web solutions.           {% endif %}
+        </p>
+        {% if listing %}
+        <ul>
+          {% for item in listing %}
+          <li>
+            <i class="ri-check-double-line"></i>{{item}}
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+
+        <ul>
+          <li>
+            <i class="ri-check-double-line"></i>
+            Web Development
+                         </li>
+          <li>
+            <i class="ri-check-double-line"></i>
+            Web Design
+           </li>
+          <li>
+            <i class="ri-check-double-line"></i>
+            Content Management Systems (CMS) Integration
+                      <li>
+            <i class="ri-check-double-line"></i>
+            Custom Web Application Development
+                    </li>
+          <li>
+            <i class="ri-check-double-line"></i>
+            E-commerce Solutions
+                    </li>
+        </ul>
+        {% endif %}
+      </div>
+      <div class="col-lg-6 pt-4 pt-lg-0">
+        <p>
+           {% if body %}
+           {{body}}
+           {% else %}
+           At Full Stack Uganda, we specialize in delivering comprehensive web solutions tailored to your needs. With expertise in web development, design, content management systems integration, custom web application development, and e-commerce solutions, we are committed to empowering your online presence. Our team brings exclusive knowledge and proficiency in the latest web development and design technologies, ensuring your projects are executed with precision and creativity. From sleek interfaces to seamless user experiences, we leverage our expertise to bring your digital vision to life.
+           {% endif %}
+        </p>
+
+        <a href="{% if cta_link %}{{cta_link}}{% else %}#{% endif %}" class="btn-learn-more">{% if cta_text %}{{cta_text}}{% else %}Learn More{% endif %}</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End About Section -->
+{% endwith %}

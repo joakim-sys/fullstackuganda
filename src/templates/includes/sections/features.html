@@ -1,0 +1,99 @@
+{% load wagtailcore_tags %}
+
+{% with features=page.features %}
+<!-- ======= Features Section ======= -->
+<section id="features" class="features">
+  <div class="container">
+    <div class="row">
+      {% if features %}
+      {% for feature in features %}
+      <div class="col-lg-3 col-md-4 col-6 col-6">
+        <div class="icon-box">
+          <i class="{{feature.icon}}" style="color: {% if feature.color %} {{feature.color}}; {% else %}#e80368;{% endif %} "></i>
+          {% if feature.link %}
+          <h3><a href="{% pageurl feature.link %}">{{feature.name}}</a></h3>
+          {% else %}
+          <h3>{{feature.name}}</h3>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="icon-box">
+            <i class="ri-tablet-line" style="color: #3498db;"></i>
+            <h3><a href="#">Responsive Design</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="icon-box">
+            <i class="ri-user-3-line" style="color: #27ae60;"></i>
+            <h3><a href="#">User Authentication</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4 mt-md-0">
+          <div class="icon-box">
+            <i class="ri-file-list-3-line" style="color: #f39c12;"></i>
+            <h3><a href="#">Content Management</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4 mt-lg-0">
+          <div class="icon-box">
+            <i class="ri-search-eye-line" style="color: #9b59b6;"></i>
+            <h3><a href="#">Search Functionality</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
+          <div class="icon-box">
+            <i class="ri-paint-brush-line" style="color: #e74c3c;"></i>
+            <h3><a href="#">Customizable Themes</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
+          <div class="icon-box">
+            <i class="ri-database-line" style="color: #2c3e50;"></i>
+            <h3><a href="">Database Integration</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
+          <div class="icon-box">
+            <i class="ri-global-line" style="color: #1abc9c;"></i>
+            <h3><a href="#">SEO Optimization</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
+          <div class="icon-box">
+            <i class="ri-bar-chart-line" style="color: #e67e22;"></i>
+            <h3><a href="#">Analytics Integration</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
+          <div class="icon-box">
+            <i class="ri-shopping-cart-line" style="color: #3498db;"></i>
+            <h3><a href="#">E-commerce Capabilities</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
+          <div class="icon-box">
+            <i class="ri-lock-line" style="color: #2980b9;"></i>
+            <h3><a href="#">Data Security</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
+          <div class="icon-box">
+            <i class="ri-arrow-up-circle-line" style="color: #2ecc71;"></i>
+            <h3><a href="#">Scalability</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
+          <div class="icon-box">
+            <i class="ri-speed-line" style="color: #f1c40f;"></i>
+            <h3><a href="">Performance Optimization</a></h3>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+<!-- End Features Section -->
+{% endwith %}

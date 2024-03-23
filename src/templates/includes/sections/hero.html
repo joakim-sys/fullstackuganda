@@ -1,0 +1,51 @@
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+<!-- ======= Hero Section ======= -->
+{% image page.hero_image fill-1920x1200 as hero_image %}
+<section
+  id="hero"
+  style="
+  width: 100%;
+  height: 100vh;
+  background: url('{{hero_image.url}}') top center;
+  background-size: cover;
+  position: relative;
+  "
+>
+
+{% with welcome=page.hero_welcome_text heading=page.hero_heading subheading=page.hero_subheading cta_link=page.hero_cta_link cta_text=page.hero_cta_text  %}
+<div class="hero-container">
+    
+    <h3>
+      {% if welcome %}
+      {{page.hero_welcome_text}}
+      {% else %}
+      Welcome to <b>Full Stack Uganda</b>
+      {% endif %}
+    </h3>
+
+    <h1>
+      {% if heading %}
+      {{heading}}
+      {% else %}
+      Empowering Your Online Presence
+      {% endif %}
+    </h1>
+    <h2>
+      {% if subheading %}
+      {{subheading}}
+      {% else %}
+      Customized Solutions for Dynamic Websites and Web Apps
+      {% endif %}
+    </h2>
+    <a
+      href="{% if cta_link %}{% pageurl cta_link %}{% else %}#about{% endif %}"
+      class="btn-get-started scrollto"
+      >
+        {% if cta_text %}{{cta_text}}{% else %}Explore{% endif %}
+      </a
+    >
+  </div>
+{% endwith %}
+</section>
+<!-- End Hero -->

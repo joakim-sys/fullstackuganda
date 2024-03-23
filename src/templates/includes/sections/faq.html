@@ -1,0 +1,126 @@
+{% with title=page.faq_title heading=page.faq_heading subheading=page.faq_subheading faqs=page.faqs.all %}
+<!-- ======= F.A.Q Section ======= -->
+<section id="faq" class="faq">
+  <div class="container">
+    <div class="section-title">
+      <h2>
+        {% if title %}{{title}}{% else %}FAQ{% endif %}
+      </h2>
+      <h3>{% if heading %}{{heading}}{% else %}Frequently Asked Questions{% endif %}</h3>
+    </div>
+
+    <ul class="faq-list">
+      {% if faqs %}
+      {% for faq in faqs.all %}
+      <li>
+        <div data-bs-toggle="collapse" class="collapsed question" href="#faq{{faq.id}}">
+          {{faq.question}}
+          <i class="bi bi-chevron-down icon-show"></i
+          ><i class="bi bi-chevron-up icon-close"></i>
+        </div>
+        <div id="faq{{faq.id}}" class="collapse" data-bs-parent=".faq-list">
+          <p>
+            {{faq.answer}}
+          </p>
+        </div>
+      </li>
+      {% endfor %}
+      {% else %}
+      <li>
+        <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">
+          How long does it take to build a website?
+          <i class="bi bi-chevron-down icon-show"></i
+          ><i class="bi bi-chevron-up icon-close"></i>
+        </div>
+        <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+          <p>
+            The timeline for building a website varies depending on the complexity of the project. Simple websites can typically be completed within a few weeks, while more complex projects may take several months. We'll work closely with you to establish a timeline that meets your needs.
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <div data-bs-toggle="collapse" class="collapsed question" href="#faq2">
+          What is the cost of building a website?
+          <i class="bi bi-chevron-down icon-show"></i
+          ><i class="bi bi-chevron-up icon-close"></i>
+        </div>
+        <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+          <p>
+            The cost of building a website depends on various factors, including the size of the site, features required, and level of customization. We offer flexible pricing options tailored to your budget and project requirements. Contact us for a personalized quote.          </p>
+        </div>
+      </li>
+
+      <li>
+        <div data-bs-toggle="collapse" class="collapsed question" href="#faq3">
+          Can you help with website maintenance after the launch?
+          <i class="bi bi-chevron-down icon-show"></i
+          ><i class="bi bi-chevron-up icon-close"></i>
+        </div>
+        <div id="faq3" class="collapse" data-bs-parent=".faq-list">
+          <p>
+            Yes, we offer website maintenance services to ensure your site remains up-to-date, secure, and performing optimally. Our maintenance plans include regular updates, backups, security monitoring, and technical support to keep your website running smoothly.
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <div data-bs-toggle="collapse" class="collapsed question" href="#faq4">
+          Do you provide website hosting services?
+          <i class="bi bi-chevron-down icon-show"></i
+          ><i class="bi bi-chevron-up icon-close"></i>
+        </div>
+        <div id="faq4" class="collapse" data-bs-parent=".faq-list">
+          <p>
+            While we do not directly provide hosting services, we can recommend reliable hosting providers based on your needs and budget. We'll assist you in setting up your hosting account and ensure seamless integration with your website.
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <div data-bs-toggle="collapse" class="collapsed question" href="#faq5">
+          Will my website be mobile-friendly?
+          <i class="bi bi-chevron-down icon-show"></i
+          ><i class="bi bi-chevron-up icon-close"></i>
+        </div>
+        <div id="faq5" class="collapse" data-bs-parent=".faq-list">
+          <p>
+            Yes, all websites we build are designed to be fully responsive, ensuring optimal viewing and functionality across devices of all sizes, including smartphones, tablets, and desktop computers.
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <div data-bs-toggle="collapse" class="collapsed question" href="#faq6">
+          Can you integrate third-party services into my website?
+          <i class="bi bi-chevron-down icon-show"></i
+          ><i class="bi bi-chevron-up icon-close"></i>
+        </div>
+        <div id="faq6" class="collapse" data-bs-parent=".faq-list">
+          <p>
+            Absolutely! Whether you need to integrate payment gateways, social media platforms, analytics tools, or any other third-party services, we have the expertise to seamlessly integrate them into your website to enhance its functionality and meet your business goals.
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <div data-bs-toggle="collapse" class="collapsed question" href="#faq7">
+          How do I update content on my website?
+          <i class="bi bi-chevron-down icon-show"></i
+          ><i class="bi bi-chevron-up icon-close"></i>
+        </div>
+        <div id="faq7" class="collapse" data-bs-parent=".faq-list">
+          <p>
+            We provide easy-to-use content management systems (CMS) such as Django and Wagtail CMS, allowing you to update content, images, and other elements of your website without any technical knowledge. We'll provide training and ongoing support to ensure you're comfortable managing your website's content.
+          </p>
+        </div>
+      </li>
+
+
+
+      {% endif %}
+    </ul>
+  </div>
+</section>
+<!-- End F.A.Q Section -->
+{% endwith %}
