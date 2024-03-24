@@ -4,7 +4,7 @@ import string
 
 from .base import *
 
-DEBUG = False
+DEBUG = int(os.environ.get("DEBUG", "0"))
 
 if "DJANGO_SECRET_KEY" in os.environ:
     SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
@@ -15,6 +15,7 @@ else:
     SECRET_KEY = "".join(
         [random.SystemRandom().choice(string.printable) for i in range(50)]
     )
+
 
 # Detectect secure connection on Heroku:
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")

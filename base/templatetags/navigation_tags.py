@@ -8,23 +8,9 @@ from services.models import Service
 register = template.Library()
 
 
-# @register.simple_tag(takes_context=True)
-# def get_site_root(context):
-#     return Site.find_for_request(context["request"]).root_page
-
 @register.simple_tag(takes_context=True)
 def get_site_root(context):
-    try:
-        request = context["request"]
-        site = Site.find_for_request(request)
-        root_page = site.root_page
-        return root_page
-    except KeyError:
-        # logger.error("Request object not found in context.")
-        return None
-    except Exception as e:
-        # logger.error(f"An error occurred: {e}")
-        return None
+    return Site.find_for_request(context["request"]).root_page
 
 
 def has_menu_children(page):
